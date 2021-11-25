@@ -13,7 +13,6 @@ rule download_remote:
         md5 = lambda wildcards: config['downloads'][wildcards.file]['md5']
     shell:
         '''
-	#mkdir -p $(dirname {output[0]})
 	curl -L {params.url} > {output}
 	echo {params.md5} {output} | md5sum -c -
         '''
