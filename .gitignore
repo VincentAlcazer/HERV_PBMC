@@ -1,3 +1,4 @@
 .snakemake
 data
+resources/downloads
 
