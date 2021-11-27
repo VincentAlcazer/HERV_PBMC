@@ -7,5 +7,5 @@ rule untar_genome:
         config['sequences']['genome_gz']
     shell:
         """
-        tar --extract --to-stdout --gzip --file={input} | pigz > {output}
+        tar --extract --to-stdout --gzip --file {input} | pigz > {output}
         """
