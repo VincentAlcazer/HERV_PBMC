@@ -1,15 +1,25 @@
 # This file should contain everything to configure the workflow on a global scale.
 # In case of sample based data, it should be complemented by a samples.tsv file that contains
 # one row per sample. It can be parsed easily via pandas.
+
 samples: "config/samples.tsv"
 
 # remote resources to be downloaded
 #
 downloads:
-  GRCh38.d1.vd1.fa.tar.gz:
+  GRCh38.fa.tar.gz:
     url: "https://api.gdc.cancer.gov/data/254f697d-310d-4d7d-a27b-27fbf767a834"
     md5: "3ffbcfe2d05d43206f57f81ebb251dc9"
-  gencode.v38.annotation.gtf.gz:
+  gencodeV38.gtf.gz:
     url: "http://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_38/gencode.v38.annotation.gtf.gz"
     md5: "16fcae8ca8e488cd8056cf317d963407"
+
+# files for reference genome index
+#
+sequences:
+    genome_tar_gz: "resources/downloads/GRCh38.fa.tar.gz"
+    genome_gz: "resources/sequences/GRCh38.fa.gz"
+
+annotations:
+    gencode_gz: "resources/downloads/gencodeV38.gtf.gz"
 
