@@ -1,3 +1,5 @@
+# this profile is for Cornell's cluster
+#
 cluster:
   mkdir -p logs/{rule} &&
   sbatch
