@@ -1,11 +1,8 @@
-#! /usr/bin/env python
-# -*- coding utf-8 -*-
-
 rule index_genome_star:
     conda:
         "../envs/star.yaml"
     input:
-	genome_fasta_gz = config['sequences']['genome_gz'],
+        genome_fasta_gz = config['sequences']['genome_gz'],
 	annotation_gtf_gz = config['annotations']['gencode_gz']
     output:
         directory(config['genome_index']['star'])
@@ -17,20 +14,20 @@ rule index_genome_star:
         mem_mb=config['star_index_mem_mb']
     shell:
         """
-        # decompress fasta and gtf to a temporal directory
+	# decompress fasta and gtf to a temporal directory
 	tdir=$(mktemp -d {config[local_tmp]}/{rule}.XXXXXX)
-
+	
 	pigz -dc {input.genome_fasta_gz} > $tdir/genome.fa
-        pigz -dc {input.annotation_gtf_gz} > $tdir/annotation.gtf
-
-	# create genome index with star
-        STAR\
-            --runThreadN {threads}\
-            --runMode genomeGenerate\
-            --genomeDir {output}\
-            --outFileNamePrefix {output}\
-            --genomeFastaFiles $tdir/genome.fa\
-            --sjdbGTFfile $tdir/annotation.gtf\
-            --sjdbOverhang {params.sjdbOverhang}
-        """
+	pigz -dc {input.annotation_gtf_gz} > $tdir/annotation.gtf
+	
+	# index reference genome with Star
+	STAR\
+	    --runThreadN {threads}\
+	    --runMode genomeGenerate\
+	    --genomeDir {output}\
+	    --outFileNamePrefix {output}\
+	    --genomeFastaFiles $tdir/genome.fa\
+	    --sjdbGTFfile $tdir/annotation.gtf\
+	    --sjdbOverhang {params.sjdbOverhang}
+	"""
 
