@@ -1,0 +1,6 @@
+name: decompress
+channels:
+  - conda-forge
+dependencies:
+  - pigz=2.6 
+
