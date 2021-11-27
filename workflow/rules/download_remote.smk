@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 # -*- coding utf-8 -*-
 
-################################# DOWNLOAD REFS #################################
+####################### DOWNLOAD REMOTE FILES #################################
 
 rule download_remote:
     """ Downloads a remote file and checks the md5sum
@@ -17,28 +17,6 @@ rule download_remote:
 	echo {params.md5} {output} | md5sum -c -
         '''
 
-
-################################# EXTRACT REFS #################################
-#
-# this is a highly specific rule
-#rule untar_genome:
-#    input:
-#        'resources/downloads/GRCh38.d1.vd1.fa.tar.gz'
-#    output:
-#        config['sequences']['genome_gz']#,
-#        config['sequences']['genome_idx'],
-#        config['sequences']['genome_dict']
-#    conda:
-#        "../envs/utils.yaml"
-#    shell:
-#        '''
-#	#mkdir -p $(dirname {output[0]})
-#	tar -Oxzf {input} | bgzip > {output}
-#	#samtools faidx {output[0]}
-#	#picard CreateSequenceDictionary R={output[0]} O={output[2]}
-#        '''
-#
-#
 #rule extract_transcriptome:
 #    input:
 #        'resources/downloads/gencode.v38.annotation.gtf.gz',
