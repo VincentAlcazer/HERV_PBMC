@@ -1,3 +1,8 @@
+# I don't love this rule
+# maybe we should keep the fasta as tar gz 
+# and simply decompress it to temp 
+# in the rule that indexes the genome
+#
 rule untar_genome:
     conda:
         "../envs/decompress.yaml"
