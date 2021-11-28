@@ -32,6 +32,6 @@ genome_index:
 #
 splice_junction_overhang: 99
 star_index_threads: 32
-star_index_mem_mb: 40000
+star_index_mem_mb: 50000
 local_tmp: "$TMPDIR"
 
