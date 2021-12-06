@@ -15,6 +15,10 @@ downloads:
   gencode38.gtf.gz:
     url: "http://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_38/gencode.v38.annotation.gtf.gz"
     md5: "16fcae8ca8e488cd8056cf317d963407"
+  # barcodes
+  whitelist.10x.v3.txt.gz:
+    url: "https://github.com/10XGenomics/cellranger/raw/master/lib/python/cellranger/barcodes/3M-february-2018.txt.gz"
+    md5: "eac3cdd869867e9e979d5da300a81823"
 
 # files for reference genome index
 #
