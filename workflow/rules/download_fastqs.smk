@@ -2,7 +2,7 @@ rule download_fastqs:
     """ Download fastq files from 10x
     """
     output:
-        "data/{s}/{s}_fastqs.tar"
+        "data/{s}_fastqs.tar"
     benchmark:
         "benchmarks/download_fastqs/{s}_download_fastqs.tsv"
     params:
@@ -17,11 +17,11 @@ rule download_fastqs:
 
 rule untar_fastqs:
     input:
-        "data/{s}/{s}_fastqs.tar"
+        "data/{s}_fastqs.tar"
     output:
-        "data/{s}/{s}_fastqs"
+        directory("data/{s}_fastqs")
     params:
-        outdir = "data/{s}"
+        outdir = "data"
     shell:
         '''
 	tar -xvf {input} --directory {params.outdir}
