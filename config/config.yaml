@@ -53,4 +53,8 @@ umi_length: 12 # v3 chemistry
 max_multimap: 500
 star_alignment_threads: 32
 
+# samtools collate parameters
+#
+samtools_collate_threads: 32
+
 
