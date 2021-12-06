@@ -3,5 +3,6 @@ data
 resources/downloads
 resources/sequences
 resources/star_index
+benchmarks
 logs
 
