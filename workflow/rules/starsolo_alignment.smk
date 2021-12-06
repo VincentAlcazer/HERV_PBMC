@@ -29,7 +29,7 @@ rule starsolo_alignment:
 	STAR\
 	    --runThreadN {threads}\
 	    --genomeDir {input.genome}\
-	    --readFilesIn cDNA_reads CB_reads\
+	    --readFilesIn {params.cDNA_reads} {params.CB_reads}\
 	    --readFilesCommand gunzip -c\
 	    --soloType CB_UMI_Simple\
 	    --soloCBwhitelist {input.whitelist}\
