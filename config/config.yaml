@@ -29,6 +29,7 @@ downloads:
 sequences:
     genome_tar_gz: "resources/downloads/GRCh38.fa.tar.gz"
     genome_gz: "resources/sequences/GRCh38.fa.gz"
+    genome_idx: "resources/sequences/GRCh38.fa.gz.fai"
 
 annotations:
     gencode_gz: "resources/downloads/gencode38.gtf.gz"

@@ -1,6 +1,9 @@
 name: decompress
 channels:
+  - bioconda
   - conda-forge
+  - defaults
 dependencies:
-  - pigz=2.6 
+  - pigz=2.6
+  - samtools ==1.9 
 
