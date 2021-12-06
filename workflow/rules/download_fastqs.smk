@@ -2,12 +2,12 @@ rule download_fastqs:
     """ Download fastq files from 10x
     """
     output:
-        "samples/{s}/{s}_fastqs.tar"
+        "data/{s}/{s}_fastqs.tar"
     benchmark:
         "benchmarks/download_fastqs/{s}_download_fastqs.tsv"
     params:
-        url = lambda wc: samples[wc.s]['url'],
-	md5 = lambda wc: samples[wc.s]['md5']
+        url = lambda wc: samples.loc[wc.s]["url"],
+	md5 = lambda wc: samples.loc[wc.s]["md5"]
     shell:
         '''
 	curl -L {params.url} > {output}
@@ -17,14 +17,17 @@ rule download_fastqs:
 
 rule untar_fastqs:
     input:
-        "samples/{s}/{s}_fastqs.tar"
+        "data/{s}/{s}_fastqs.tar"
     output:
-        "samples/{s}/{s}_fastqs"
+        "data/{s}/{s}_fastqs"
+    params:
+        outdir = "data/{s}"
     shell:
         '''
-	tar -xvf {input}
+	tar -xvf {input} --directory {params.outdir}
+	'''
 
-rule fastqs_complete:
-    input:
-        expand("samples/{s}/{s}_fastqs", s = samples[sample_name])
+#rule fastqs_complete:
+#    input:
+#        expand("data/{s}/{s}_fastqs", s = samples[sample_name])
 
