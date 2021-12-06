@@ -11,7 +11,7 @@ configfile: "config/config.yaml"
 
 rule all:
     input:
-        expand("results/starsolo_alignment/{s}/{s}.collated.out.bam", s = samples["sample_name"])
+        expand("results/completed/{s}_completed.txt", s = samples["sample_name"])
 
 
 include: "rules/download_fastqs.smk"
@@ -21,4 +21,5 @@ include: "rules/index_genome_star.smk"
 include: "rules/get_whitelist.smk"
 include: "rules/starsolo_alignment.smk"
 include: "rules/samtools_collate.smk"
+include: "rules/sterllarscope.smk"
 
