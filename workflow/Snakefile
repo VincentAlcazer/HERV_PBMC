@@ -1,18 +1,26 @@
 # The main entry point of your workflow.
 # After configuring, running snakemake -n in a clone of this repository should successfully execute a dry-run of the workflow.
 
+#report: "report/workflow.rst"
 
-report: "report/workflow.rst"
+pepfile: "config/pep/PBMCs_10x_stellarscope_project_config.yaml"
 
-# Allow users to fix the underlying OS via singularity.
-singularity: "docker://continuumio/miniconda3"
+samples = pep.sample_table
 
+configfile: "config/config.yaml"
 
 rule all:
     input:
-        # The first rule should define the default target files
-        # Subsequent target rules can be specified below. They should start with all_*.
+        expand("results/completed/{s}_completed.txt", s = samples["sample_name"])
 
 
-include: "rules/common.smk"
-include: "rules/other.smk"
+include: "rules/download_fastqs.smk"
+include: "rules/download_remote.smk"
+include: "rules/untar_genome.smk"
+include: "rules/index_genome_star.smk"
+include: "rules/get_whitelist.smk"
+include: "rules/starsolo_alignment.smk"
+include: "rules/samtools_collate.smk"
+include: "rules/telescope_annotation.smk"
+include: "rules/stellarscope.smk"
+

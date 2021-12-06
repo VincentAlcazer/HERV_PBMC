@@ -1,0 +1,9 @@
+name: star
+channels:
+  - bioconda
+  - conda-forge
+  - defaults
+dependencies:
+  - star=2.7.9a
+  - pigz=2.6 
+  

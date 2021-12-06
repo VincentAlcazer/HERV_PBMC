@@ -1,0 +1,26 @@
+cluster:
+  mkdir -p logs/{rule} &&
+  sbatch
+    --partition={resources.partition}
+    --cpus-per-task={threads}
+    --job-name=smk-{rule}-{wildcards}
+    --output=logs/{rule}/{rule}-{wildcards}-%j.out
+config: local_tmp="$TMPDIR"
+default-resources:
+  - partition=defq
+  - qos=0
+  - nodes=1
+jobs: 18
+cores: 24
+restart-times: 0
+max-jobs-per-second: 1
+max-status-checks-per-second: 10
+local-cores: 1
+rerun-incomplete: false
+keep-going: true
+use-conda: true
+conda-frontend: mamba
+printshellcmds: true
+reason: true
+conda-prefix: .snakemake/conda
+

@@ -1,0 +1,9 @@
+.snakemake
+data
+resources/downloads
+resources/sequences
+resources/star_index
+resources/whitelist
+benchmarks
+logs
+
