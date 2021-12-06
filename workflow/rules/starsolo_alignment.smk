@@ -5,15 +5,14 @@ rule starsolo_alignment:
     conda:
         "../envs/star.yaml"
     input:
-        forward_reads = ,
-	reverse_reads = ,
+        fastq_files = "data/{s}_fastqs",
 	genome = config['genome_index']['star'],
 	whitelist = config['whitelist']['v3']
     output:
         "results/starsolo_alignment/{s}/{s}.Aligned.sortedByCoord.out.bam"
     params:
-        cDNA = ,
-	barcodes = ,
+        cDNA = , # reverse reads (10x v3)
+	barcodes = , # forward reads (10x v3)
 	out_prefix = "results/starsolo_alignment/{s}/{s}.",
 	cb_start = config['cellbarcode_start'],
 	cb_length = config['cellbarcode_length'],
