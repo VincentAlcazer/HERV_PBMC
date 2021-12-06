@@ -1,29 +1,26 @@
-# this profile is for Cornell's cluster
-#
 cluster:
   mkdir -p logs/{rule} &&
   sbatch
     --partition={resources.partition}
     --cpus-per-task={threads}
     --job-name=smk-{rule}-{wildcards}
-    --mem={resources.mem_mb}
     --output=logs/{rule}/{rule}-{wildcards}-%j.out
-    --nodes=1
+config: local_tmp="$TMPDIR"
 default-resources:
-  - partition=panda
+  - partition=defq
   - qos=0
   - nodes=1
-cores: 32
+jobs: 18
+cores: 24
 restart-times: 0
 max-jobs-per-second: 1
 max-status-checks-per-second: 10
-local-cores: 8
-latency-wait: 60
-jobs: 10000
-keep-going: True
-rerun-incomplete: False
-printshellcmds: True
-scheduler: greedy
-use-conda: True
+local-cores: 1
+rerun-incomplete: false
+keep-going: true
+use-conda: true
 conda-frontend: mamba
+printshellcmds: true
+reason: true
 conda-prefix: .snakemake/conda
+
