@@ -1,4 +1,4 @@
-sample_name,assay,protocol,organism,url,md5sum
+sample_name,assay,protocol,organism,url,md5
 20k_PBMC_3p_HT_nextgem_Chromium_X,scRNA-seq,10x_v3,human,https://s3-us-west-2.amazonaws.com/10x.files/samples/cell-exp/6.1.0/20k_PBMC_3p_HT_nextgem_Chromium_X/20k_PBMC_3p_HT_nextgem_Chromium_X_fastqs.tar,650201ca6bd1af3f984a629da318d23b
 10k_PBMC_3p_nextgem_Chromium_X,scRNA-seq,10x_v3,human,https://s3-us-west-2.amazonaws.com/10x.files/samples/cell-exp/6.1.0/10k_PBMC_3p_nextgem_Chromium_X/10k_PBMC_3p_nextgem_Chromium_X_fastqs.tar,43ea77ed6f860597c568e9ff819f0504
 500_PBMC_3p_LT_Chromium_X,scRNA-seq,10_v3,human,https://cf.10xgenomics.com/samples/cell-exp/6.1.0/500_PBMC_3p_LT_Chromium_X/500_PBMC_3p_LT_Chromium_X_fastqs.tar,5b36a7bfda36a7093adc8e30c3fa92c8
