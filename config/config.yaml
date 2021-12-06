@@ -19,6 +19,10 @@ downloads:
   whitelist.10x.v3.txt.gz:
     url: "https://github.com/10XGenomics/cellranger/raw/master/lib/python/cellranger/barcodes/3M-february-2018.txt.gz"
     md5: "eac3cdd869867e9e979d5da300a81823"
+  # telescope annotation
+  retro.hg38.v1.gtf:
+    url: "https://github.com/mlbendall/telescope_annotation_db/raw/master/builds/retro.hg38.v1/transcripts.gtf"
+    md5: "c07cf115c1f957b3020efc547f3847fa"
 
 # files for reference genome index
 #
