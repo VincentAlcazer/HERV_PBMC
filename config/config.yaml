@@ -32,10 +32,19 @@ annotations:
 genome_index:
     star: "resources/star_index/GRCh38_gencode38"
 
+# Additional files
+#
+whitelist:
+    v3: "resources/whitelist/whitelist.10x.v3.txt"
+
 # STAR index parameters
 #
 splice_junction_overhang: 99
 star_index_threads: 32
 star_index_mem_mb: 50000
 local_tmp: "$TMPDIR"
+
+# STARsolo alignment parameters
+#
+
 
