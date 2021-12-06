@@ -11,7 +11,7 @@ configfile: "config/config.yaml"
 
 rule all:
     input:
-        expand("data/{s}/{s}_fastqs", s = samples["sample_name"])
+        expand("data/{s}_fastqs", s = samples["sample_name"])
 
 
 include: "rules/download_fastqs.smk"
