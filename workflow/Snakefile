@@ -18,5 +18,5 @@ include: "rules/download_fastqs.smk"
 include: "rules/download_remote.smk"
 include: "rules/untar_genome.smk"
 include: "rules/index_genome_star.smk"
-
+include: "rules/get_whitelist.smk"
 
