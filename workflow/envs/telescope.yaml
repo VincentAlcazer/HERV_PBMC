@@ -1,0 +1,17 @@
+name: telescope
+channels:
+  - bioconda
+dependencies:
+  - python=3.6.10
+  - future
+  - pyyaml
+  - cython=0.29.7
+  - numpy=1.16.3
+  - scipy=1.2.1
+  - pysam=0.15.2
+  - htslib=1.9
+  - intervaltree=3.0.2
+  - pandas=1.1.3
+  - pip:
+    - git+git://github.com/mlbendall/telescope.git@6cd55256c6016feffdbfe10346bfecfcb1e30965
+
