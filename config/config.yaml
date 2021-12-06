@@ -33,6 +33,7 @@ sequences:
 
 annotations:
     gencode_gz: "resources/downloads/gencode38.gtf.gz"
+    retro: "resources/annotation/retro.gtf"
 
 genome_index:
     star: "resources/star_index/GRCh38_gencode38"
