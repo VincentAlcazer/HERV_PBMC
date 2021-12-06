@@ -46,5 +46,11 @@ local_tmp: "$TMPDIR"
 
 # STARsolo alignment parameters
 #
+cellbarcode_start: 1
+cellbarcode_length: 16
+umi_start: 17
+umi_length: 12 # v3 chemistry
+max_multimap: 500
+star_alignment_threads: 32
 
 
