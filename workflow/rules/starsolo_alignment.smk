@@ -11,8 +11,8 @@ rule starsolo_alignment:
     output:
         "results/starsolo_alignment/{s}/{s}.Aligned.sortedByCoord.out.bam"
     params:
-        cDNA = , # reverse reads (10x v3)
-	barcodes = , # forward reads (10x v3)
+        cDNA_reads = lambda wc: ','.join(samples.loc[wc.s]["read2"]), # reverse reads (10x v3)
+	CB_reads = lambda wc: ','.join(samples.loc[wc.s]["read1"]), # forward reads (10x v3)
 	out_prefix = "results/starsolo_alignment/{s}/{s}.",
 	cb_start = config['cellbarcode_start'],
 	cb_length = config['cellbarcode_length'],
@@ -29,7 +29,7 @@ rule starsolo_alignment:
 	STAR\
 	    --runThreadN {threads}\
 	    --genomeDir {input.genome}\
-	    --readFilesIn {params.cDNA} {params.barcodes}\
+	    --readFilesIn cDNA_reads CB_reads\
 	    --readFilesCommand gunzip -c\
 	    --soloType CB_UMI_Simple\
 	    --soloCBwhitelist {input.whitelist}\
