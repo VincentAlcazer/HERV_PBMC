@@ -21,5 +21,6 @@ include: "rules/index_genome_star.smk"
 include: "rules/get_whitelist.smk"
 include: "rules/starsolo_alignment.smk"
 include: "rules/samtools_collate.smk"
-include: "rules/sterllarscope.smk"
+include: "rules/telescope_annotation.smk"
+include: "rules/stellarscope.smk"
 
