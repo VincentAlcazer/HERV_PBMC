@@ -17,6 +17,6 @@ rule samtools_collate:
 	    {input}\
 	    -o {output}\
 	    -@ {threads}\
-	    {params.tmpdir}
+	    /local/
 	'''
 
