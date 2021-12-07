@@ -7,8 +7,6 @@ rule samtools_collate:
         "results/starsolo_alignment/{s}/{s}.Aligned.sortedByCoord.out.bam"
     benchmark:
         "benchmarks/samtools_collate/{s}_samtools_collate.tsv"
-    params:
-        tmpdir = config['tmpdir'] 
     threads:
         config['samtools_collate_threads']
     shell:
@@ -17,6 +15,6 @@ rule samtools_collate:
 	    {input}\
 	    -o {output}\
 	    -@ {threads}\
-	    {params.tmpdir}
+	    /local/
 	'''
 

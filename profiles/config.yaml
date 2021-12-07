@@ -10,8 +10,8 @@ default-resources:
   - partition=defq
   - qos=0
   - nodes=1
-jobs: 18
-cores: 24
+jobs: 14
+cores: 20
 restart-times: 0
 max-jobs-per-second: 1
 max-status-checks-per-second: 10
