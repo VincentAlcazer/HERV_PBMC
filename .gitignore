@@ -4,6 +4,7 @@ resources/downloads
 resources/sequences
 resources/star_index
 resources/whitelist
+resources/annotation
 benchmarks
 logs
 
