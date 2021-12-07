@@ -8,6 +8,6 @@ rule untar_genome:
 	config['sequences']['genome_idx']
     shell:
         """
-        tar --extract --to-stdout --gzip --file {input} | pigz > {output[0]}
+        tar --extract --to-stdout --gzip --file {input} | bgzip > {output[0]}
 	samtools faidx {output[0]}
         """
