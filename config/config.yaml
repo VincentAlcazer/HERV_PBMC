@@ -67,3 +67,7 @@ samtools_collate_threads: 32
 #
 telescope_threads: 24
 
+# cellsort parameters
+#
+cell_sort_tmp: "/local/"
+
