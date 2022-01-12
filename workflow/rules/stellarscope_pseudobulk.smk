@@ -40,9 +40,3 @@ rule stellarscope_pseudobulk:
 	    2>&1 | tee {log[0]}
 	'''
 
-rule sample_complete:
-    input:
-        rules.stellarscope_pseudobulk.output
-    output:
-        touch("results/completed/{s}_completed.txt")
-
