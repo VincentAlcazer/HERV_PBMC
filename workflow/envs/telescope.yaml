@@ -13,5 +13,5 @@ dependencies:
   - intervaltree=3.0.2
   - pandas=1.1.3
   - pip:
-    - git+git://github.com/mlbendall/telescope.git@6cd55256c6016feffdbfe10346bfecfcb1e30965
+    - git+git://github.com/mlbendall/telescope.git@c333251f9a088c8ae07dd683926fd77b5939d595
 
