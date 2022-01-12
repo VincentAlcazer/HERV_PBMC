@@ -9,7 +9,8 @@ rule starsolo_alignment:
 	genome = config['genome_index']['star'],
 	whitelist = config['whitelist']['v3']
     output:
-        "results/starsolo_alignment/{s}/{s}.Aligned.sortedByCoord.out.bam"
+        "results/starsolo_alignment/{s}/{s}.Aligned.sortedByCoord.out.bam",
+        "results/starsolo_alignment/{s}/{s}.Solo.out/Gene/filtered/barcodes.tsv"
     params:
         cDNA_reads = lambda wc: ','.join(samples.loc[wc.s]["read2"]), # reverse reads (10x v3)
 	CB_reads = lambda wc: ','.join(samples.loc[wc.s]["read1"]), # forward reads (10x v3)
