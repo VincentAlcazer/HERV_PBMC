@@ -23,4 +23,5 @@ include: "rules/starsolo_alignment.smk"
 include: "rules/samtools_collate.smk"
 include: "rules/telescope_annotation.smk"
 include: "rules/stellarscope_pseudobulk.smk"
+include: "rules/stellarscope_individual.smk"
 
