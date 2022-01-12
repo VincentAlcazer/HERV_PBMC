@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 # -*- coding utf-8 -*-
 
-rule stellarscope:
+rule stellarscope_pseudobulk:
     conda:
         "../envs/telescope.yaml"
     output:
@@ -42,7 +42,7 @@ rule stellarscope:
 
 rule sample_complete:
     input:
-        rules.stellarscope.output
+        rules.stellarscope_pseudobulk.output
     output:
         touch("results/completed/{s}_completed.txt")
 
