@@ -65,5 +65,5 @@ samtools_collate_threads: 32
 
 # telescope parameters
 #
-telescope_threads: 2
+telescope_threads: 24
 
