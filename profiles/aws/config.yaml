@@ -10,12 +10,12 @@ default-resources:
   - partition=defq
   - qos=0
   - nodes=1
-jobs: 14
-cores: 20
+jobs: 10000
+#cores: 32
 restart-times: 0
 max-jobs-per-second: 1
 max-status-checks-per-second: 10
-local-cores: 1
+local-cores: 4
 rerun-incomplete: false
 keep-going: true
 use-conda: true
