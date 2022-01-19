@@ -1,0 +1,8 @@
+name: merger
+channels:
+  - bioconda
+  - conda-forge
+  - defaults
+dependencies:
+  - r-optparse
+  - r-matrix
