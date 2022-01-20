@@ -10,7 +10,7 @@ rule starsolo_alignment:
 	whitelist = config['whitelist']['v3']
     output:
         "results/starsolo_alignment/{s}/{s}.Aligned.sortedByCoord.out.bam",
-        "results/starsolo_alignment/{s}/{s}.Solo.out/Gene/filtered/barcodes.tsv"
+        "results/starsolo_alignment/{s}/{s}.Solo.out/Gene/filtered/barcodes.tsv",
         directory("results/starsolo_alignment/{s}/{s}.Solo.out/Gene/filtered")
     params:
         cDNA_reads = lambda wc: ','.join(samples.loc[wc.s]["read2"]), # reverse reads (10x v3)

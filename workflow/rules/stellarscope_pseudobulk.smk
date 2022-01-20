@@ -5,7 +5,8 @@ rule stellarscope_pseudobulk:
     conda:
         "../envs/telescope.yaml"
     output:
-        "results/telescope_pseudobulk/{s}/{s}_pseudobulk-TE_counts.mtx"
+        "results/telescope_pseudobulk/{s}/{s}_pseudobulk-TE_counts.mtx",
+	directory("results/telescope_pseudobulk/{s}")
     input:
         bam = "results/starsolo_alignment/{s}/{s}.collated.out.bam",
 	annotation = rules.telescope_annotation.output,

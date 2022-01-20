@@ -41,10 +41,11 @@ option_list = list(
 
 opt <- parse_args(OptionParser(option_list=option_list))
 
-#opt$sample = "500_PBMC_3p_LT_Chromium_X"
-#opt$coding = "results/starsolo_alignment/500_PBMC_3p_LT_Chromium_X/500_PBMC_3p_LT_Chromium_X.Solo.out/Gene/filtered/"
-#opt$transposable = "results/telescope/500_PBMC_3p_LT_Chromium_X/"
-#opt$output = "results/matrix_counts/500_PBMC_3p_LT_Chromium_X/"
+opt$sample = snakemake@params[["sample"]]
+opt$coding = snakemake@input[["protein_coding_dir"]]
+opt$transposable = snakemake@input[["transposable_elements_dir"]]
+# In this case I am making the output the whole file 
+opt$output = snakemake@output[[1]]
 
 if (is.null(opt$sample)){
   print_help(OptionParser(option_list=option_list))
@@ -52,15 +53,15 @@ if (is.null(opt$sample)){
 }
 
 ##########################  read in protein coding matrix ########################## 
-PC.mat <- readMM(file = paste0(opt$coding, "matrix.mtx"))
-message(paste0("\nProtein coding counts matrix is loaded: ", opt$coding, "matrix.mtx"))
+PC.mat <- readMM(file = paste0(opt$coding, "/matrix.mtx"))
+message(paste0("\nProtein coding counts matrix is loaded: ", opt$coding, "/matrix.mtx"))
 
 # read in protein coding feature names
-PC.features <- read.delim(file = paste0(opt$coding, "features.tsv"),
+PC.features <- read.delim(file = paste0(opt$coding, "/features.tsv"),
                           header = FALSE, stringsAsFactors = FALSE)
 
 # read in protein coding barcodes
-PC.barcodes <- read.delim(file = paste0(opt$coding, "barcodes.tsv"),
+PC.barcodes <- read.delim(file = paste0(opt$coding, "/barcodes.tsv"),
                           header = FALSE, stringsAsFactors = FALSE)
 
 rownames(PC.mat) = PC.features$V1
@@ -68,16 +69,16 @@ colnames(PC.mat) = PC.barcodes$V1
 
 rm(PC.features, PC.barcodes)
 ########################## read in transposable elements matrix ########################## 
-TE.mat <- readMM(file = paste0(opt$transposable, opt$sample, "-TE_counts.mtx"))
+TE.mat <- readMM(file = paste0(opt$transposable, "/", opt$sample, "-TE_counts.mtx"))
 TE.mat <- t(TE.mat)
-message(paste0("\nTransposable elements counts matrix is loaded: ", opt$transposable, opt$sample, "-TE_counts.mtx"))
+message(paste0("\nTransposable elements counts matrix is loaded: ", opt$transposable, "/", opt$sample, "-TE_counts.mtx"))
 
 # read in transposable elements feature names
-TE.features <- read.delim(file = paste0(opt$transposable, opt$sample, "-features.tsv"),
+TE.features <- read.delim(file = paste0(opt$transposable, "/", opt$sample, "-features.tsv"),
                           header = TRUE, stringsAsFactors = FALSE)
 
 # read in transposable elements barcodes
-TE.barcodes <- read.delim(file = paste0(opt$transposable, opt$sample, "-barcodes.tsv"),
+TE.barcodes <- read.delim(file = paste0(opt$transposable, "/", opt$sample, "-barcodes.tsv"),
                           header=TRUE, stringsAsFactors = FALSE)
 
 # why is no feature the second one?
@@ -98,7 +99,8 @@ message("\nThe two matrices have been merged")
 #rm(PC.mat, TE.mat)
 ########################## save object ########################## 
 # save object
-saveRDS(object = PC.TE.mat, file = paste0(opt$output, opt$sample, "_matrix.Rds"))
+#saveRDS(object = PC.TE.mat, file = paste0(opt$output, opt$sample, "_matrix.Rds"))
+saveRDS(object = PC.TE.mat, file = opt$output)
 #
-# should I save the individual matrices as Rds too? get a flag in opts
+# should I save the matrix in text format (three files)? get a flag in opts
 message(paste0("\nMerged matrix is saved to: ", opt$output))

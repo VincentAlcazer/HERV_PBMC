@@ -22,7 +22,8 @@ rule stellarscope_individual:
     conda:
         "../envs/telescope.yaml"
     output:
-        "results/telescope_individual/{s}/{s}_individual-TE_counts.mtx"
+        "results/telescope_individual/{s}/{s}_individual-TE_counts.mtx",
+	directory("results/telescope_individual/{s}")
     input:
         bam = "results/starsolo_alignment/{s}/{s}.Aligned.sortedByCB.bam",
 	annotation = rules.telescope_annotation.output,

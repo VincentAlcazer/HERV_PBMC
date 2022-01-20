@@ -11,7 +11,7 @@ configfile: "config/config.yaml"
 
 rule all:
     input:
-        expand("results/completed/{s}_completed.txt", s = samples["sample_name"])
+        expand("results/completed/{s}_{method}_completed.txt", s = samples["sample_name"], method = ["pseudobulk", "individual"])
 
 
 include: "rules/download_fastqs.smk"
@@ -24,5 +24,6 @@ include: "rules/samtools_collate.smk"
 include: "rules/telescope_annotation.smk"
 include: "rules/stellarscope_pseudobulk.smk"
 include: "rules/stellarscope_individual.smk"
+include: "rules/merge_matrices.smk"
 include: "rules/sample_complete.smk"
 
