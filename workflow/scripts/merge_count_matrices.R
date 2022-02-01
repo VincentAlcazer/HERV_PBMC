@@ -63,8 +63,10 @@ PC.features <- read.delim(file = paste0(opt$coding, "/features.tsv"),
 # read in protein coding barcodes
 PC.barcodes <- read.delim(file = paste0(opt$coding, "/barcodes.tsv"),
                           header = FALSE, stringsAsFactors = FALSE)
-
-rownames(PC.mat) = PC.features$V1
+# in the features
+# V1 are ensemble gene IDs
+# V2 are gene symbols
+rownames(PC.mat) = PC.features$V2
 colnames(PC.mat) = PC.barcodes$V1
 
 rm(PC.features, PC.barcodes)
