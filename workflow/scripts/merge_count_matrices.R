@@ -66,7 +66,8 @@ PC.barcodes <- read.delim(file = paste0(opt$coding, "/barcodes.tsv"),
 # in the features
 # V1 are ensemble gene IDs
 # V2 are gene symbols
-rownames(PC.mat) = PC.features$V2
+# I might only need to add a "ENSG" tag to the beginning of gene symbols, if we never use ensembl gene ID going forward
+rownames(PC.mat) = paste0(PC.features$V1, "hrg", PC.features$V2)
 colnames(PC.mat) = PC.barcodes$V1
 
 rm(PC.features, PC.barcodes)
