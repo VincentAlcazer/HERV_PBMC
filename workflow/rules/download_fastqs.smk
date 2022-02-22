@@ -6,8 +6,8 @@ rule download_fastqs:
     benchmark:
         "benchmarks/download_fastqs/{s}_download_fastqs.tsv"
     params:
-        url = lambda wc: samples.loc[wc.s]["url"],
-	md5 = lambda wc: samples.loc[wc.s]["md5"]
+        url = lambda wc: samples.loc[wc.s]["url_fastqs"],
+	md5 = lambda wc: samples.loc[wc.s]["md5_fastqs"]
     shell:
         '''
 	curl -L {params.url} > {output}

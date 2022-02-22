@@ -15,6 +15,7 @@ rule all:
 
 
 include: "rules/download_fastqs.smk"
+include: "rules/download_clusters.smk"
 include: "rules/download_remote.smk"
 include: "rules/untar_genome.smk"
 include: "rules/index_genome_star.smk"
