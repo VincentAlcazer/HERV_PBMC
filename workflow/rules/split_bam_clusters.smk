@@ -31,7 +31,7 @@ rule obtain_cluster_barcodes:
         file={params.filename}
         # awk receives a file (the rule input), the variable f (the rule params) 
         # awk skips the first record, substitutes the -1 suffix with nothing in the first column
-        # prints the formatted first column to the file whose name is built using the second column
+        # then prints this formatted first column to a file whose name is built using the second column
         #
         awk -F, -v f="$file" 'NR>1 {{gsub(\"-1\",\"\",$1); print $1 > f".CLUST_"$2".barcodes"}}' {input}
         """
