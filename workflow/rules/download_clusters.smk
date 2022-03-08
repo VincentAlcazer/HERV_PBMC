@@ -27,7 +27,23 @@ rule untar_clusters:
 	tar -xvf {input} --directory {params.outdir}
 	'''
 
-#rule fastqs_complete:
-#    input:
-#        expand("data/{s}/{s}_fastqs", s = samples[sample_name])
+checkpoint split_barcodes_in_clusters:
+    """
+    Notice that we have to use double curly braces for awk and escape the quotes in gsub
+    """
+    output:
+        touch("data/{s}_clusters/analysis/clustering/graphclust/.{s}_split_barcodes")
+    input:
+        "data/{s}_clusters/analysis/clustering/graphclust/clusters.csv"
+    params:
+        name="data/{s}_clusters/analysis/clustering/graphclust/{s}"
+    shell:
+        """
+        file={params.name}
+        # awk receives a csv file (the rule input), the variable f (the rule params)
+        # awk skips the first record, substitutes the -1 suffix with nothing in the first column
+        # then prints this formatted first column to a file whose name is built using the second column
+        #
+        awk -F, -v f="$file" 'NR>1 {{gsub(\"-1\",\"\",$1); print $1 > f".CLUST_"$2".barcodes"}}' {input}
+	"""
 
